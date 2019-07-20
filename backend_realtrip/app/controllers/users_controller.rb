@@ -6,6 +6,14 @@ class UsersController < ApplicationController
     render json: @users
   end
 
+  def profile
+    if @user
+      render json: @user.profile_info
+    else
+      render json: {}, status: :not_found
+    end
+  end
+
   def show
     render json: @user
   end
@@ -27,11 +35,12 @@ class UsersController < ApplicationController
 		end
   end
   
-  def profile
-    if @user
-      render json: @user.profile_info
+  def delete
+    unless @user.nil?
+      @user.destroy
+      render json: { user: @user }
     else
-      render json: {}, status: :not_found
+      render json: { error: "User not Found! "}, status: 404
     end
   end
 

@@ -5,7 +5,7 @@ ruby '2.6.3'
 
 
 
-# gem 'active_model_serializers'
+gem 'active_model_serializers'
 gem 'pry'
 
 
