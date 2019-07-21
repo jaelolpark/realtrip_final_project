@@ -1,0 +1,37 @@
+@import '../../index.scss';
+
+#navbar {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 7fr 3.48fr;
+
+  padding: 10px 0 10px 0;
+
+}
+
+#navbar div {
+  display: inline-block;
+}
+
+#logo {
+  width: 160px;
+  height: 45px;
+}
+
+.navbar-item a {
+  cursor: pointer;
+  padding: 7px;
+  margin: 0 8px;
+
+  color: $mainBlue;
+  font-size: 1.16em;
+  text-decoration: none;
+  border: 2px solid $mainBlue;
+  border-radius: 8px;
+  transition: 0.30s;
+}
+
+.navbar-item a:hover {
+  color: white;
+  background-color: $mainBlue;
+}

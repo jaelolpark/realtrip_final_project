@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authorized, only: [:create]
   before_action :set_user, only: [:show, :update, :profile]
 
   def index
@@ -7,11 +8,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    if @user
-      render json: @user.profile_info
-    else
-      render json: {}, status: :not_found
-    end
+    render json: { user: UserSerializer.new(current_user) }, status: :accepted
   end
 
   def show
@@ -19,12 +16,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(new_user_params)
-    if(@user.save)
-      render json: { token: 'success', user_id: @user.id }, status: :ok
-		else
-			render json: { errors: @user.errors.full_messages }
-		end
+    @user = User.create(new_user_params)
+    if @user.valid?
+      @token = encode_token({ user_id: @user.id })
+      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+    else
+      render json: { error: 'failed to create user' }, status: :not_acceptable
+    end
   end
   
   def update
@@ -50,14 +48,14 @@ class UsersController < ApplicationController
   end
 
   def new_user_params
-    params.require(:user).permit(:to_be_guide, :first_name, :last_name, :email, :password, :phone_number)
+    params.require(:user).permit(:to_be_guide, :first_name, :last_name, :username, :password, :password_confirmation, :phone_number)
   end
 
   def visitor_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :phone_number)
+    params.require(:user).permit(:first_name, :last_name, :username, :password, :password_confirmation, :phone_number)
   end
 
   def guide_params
-    params.require(:user).permit(:to_be_guide, :first_name, :last_name, :email, :password, :phone_number, :introduce, :avatar)
+    params.require(:user).permit(:to_be_guide, :first_name, :last_name, :username, :password, :password_confirmation, :phone_number, :introduce, :avatar)
   end
 end
