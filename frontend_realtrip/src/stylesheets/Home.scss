@@ -1,0 +1,51 @@
+@import '../index.scss';
+
+.tour-container {
+  width: 100vw;
+  margin: 50px auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  justify-items: center;
+}
+
+.tour-card {
+  position: relative;
+  overflow: hidden;
+  height: 425px;
+  width: 350px;
+
+  margin: 25px 0;
+
+  border: 2px solid $mainBlue;
+  // border-bottom: none;
+  border-radius: 8px;
+
+  background-size: cover;
+}
+.tour-card .price {
+  display: inline-block; 
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  padding: 0 5px;
+
+  border-left: 1px solid rgb(100,100,100);
+  border-bottom: 1px solid rgb(100,100,100);
+  border-bottom-left-radius: 12px;
+  background-color: rgba(255,255,255, 0.60);
+ }
+
+.tour-card .heading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  margin: 1;
+  padding: 2px 5px;
+  text-align: center;
+
+  background-color: rgba(255,255,255, 0.70);
+}

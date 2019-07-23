@@ -5,13 +5,15 @@ class CreateTours < ActiveRecord::Migration[5.2]
       
       t.string :title
       t.string :detail
-      t.string :language
+      t.string :second_language
       t.integer :number_of_ppl
       t.float :price
       t.string :location
       t.string :include
       t.string :exclude
       
+      t.string :image_url
+
       t.datetime :start_time
       t.datetime :end_time
 

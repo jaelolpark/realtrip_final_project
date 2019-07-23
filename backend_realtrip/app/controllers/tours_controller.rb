@@ -41,6 +41,6 @@ class ToursController < ApplicationController
 	end
 
   def tour_params
-		params.require(:tour).permit(:title, :detail, :language, :number_of_ppl, :price, :location, :include, :exclude, :guide_id, :start_date, :start_time, :end_date, :end_time)
+		params.require(:tour).permit(:title, :detail, :second_language, :number_of_ppl, :price, :location, :include, :exclude, :guide_id, :start_date, :start_time, :end_date, :end_time)
 	end
 end

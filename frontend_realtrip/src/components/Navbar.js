@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import './Navbar.scss';
-import logo from '../../logo.png'
+import '../stylesheets/Navbar.scss';
+import logo from '../image/logo.png'
 
 let loggedIn = false;
 
@@ -14,6 +14,8 @@ export default function Navbar() {
         </Link>
         
         <div className='log-btns'>
+          <div className='navbar-item'><Link to='/'>Home</Link></div>
+          <div className='navbar-item'><Link to='/'>Things To Do</Link></div>
           <div className='navbar-item'><Link to='/'>Become a Partner</Link></div>
           {
             loggedIn ?

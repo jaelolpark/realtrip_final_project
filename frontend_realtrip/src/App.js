@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
-import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home'
-import SignIn from './components/SignIn'
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import SignIn from './components/SignIn';
 
 import './App.scss';
 
@@ -10,7 +10,9 @@ class App extends Component {
   render() {
     return (
       <div id='App'>
-        <Navbar/>
+        <main>
+          <Navbar />
+        </main>
 
         <Switch>
           <Route exact path='/' component={Home} />
@@ -22,4 +24,3 @@ class App extends Component {
 }
 
 export default App;
- 
