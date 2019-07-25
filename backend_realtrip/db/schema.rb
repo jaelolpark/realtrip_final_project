@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2019_07_19_165212) do
     t.string "last_name"
     t.string "username"
     t.string "password_digest"
-    t.string "phone_number"
     t.boolean "to_be_guide"
     t.string "introduce"
     t.string "avatar"

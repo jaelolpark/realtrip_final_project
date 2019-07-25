@@ -10,8 +10,8 @@ Booking.destroy_all
 Tour.destroy_all
 Review.destroy_all
 
-g1 = User.create(first_name: 'jae', last_name: 'park', username: 'jae', password: '123', phone_number: '1231231234', to_be_guide: 'true', introduce: 'I am the best guide')
-v1 = User.create(first_name: 'evan', last_name: 'kim', username: 'evan', password: '123', phone_number: '3213213214', to_be_guide: 'false')
+g1 = User.create(first_name: 'jae', last_name: 'park', username: 'jae', password: '123', to_be_guide: 'true', introduce: 'I am the best guide')
+v1 = User.create(first_name: 'evan', last_name: 'kim', username: 'evan', password: '123', to_be_guide: 'false')
 
 t1 = Tour.create(title: 'New York Snapshot', detail: "I want to keep New York, moments of travel. Keep sparkling moments in New York. You can keep those moments memorable through your trip to New York with great pictures. It is recommended for those who want to shoot in their own atmosphere with one hour package. I hope this snapshot with me will help me get closer to New York. It is a one-hour New York snap with enjoying and enjoying that moment of shooting is part of the trip.", second_language: 'Korean', number_of_ppl: '2', price: '100', location: '589 5th Ave, New York, NY 10017', include: 'Snapshot',user: g1, start_time: Time.now, end_time: Time.now, image_url: 'https://d2ur7st6jjikze.cloudfront.net/offer_photos/42494/263612_large_1536809824.jpg?1536809824')
 t2 = Tour.create(title: 'Niagara Falls Tour in a day', detail: "Niagara Falls is a city on the Niagara River, in New York State. It’s known for the vast Niagara Falls, which straddle the Canadian border. In Niagara Falls State Park, the Observation Tower, at Prospect Point, juts out over Niagara Gorge for a view of all 3 waterfalls. Trails from the Niagara Gorge Discovery Center lead to other viewpoints. The Aquarium of Niagara is home to Humboldt penguins, seals and sea lions.", second_language: 'Japanese', number_of_ppl: '6', price: '300', location: '4200 Genesee St, Buffalo, NY 14225', include: 'Lunch, Cruise', exclude: 'JetBoat tour', image_url: 'https://d1blyo8czty997.cloudfront.net/tour-photos/5733/1200x600/3572767026.jpg', user: g1)

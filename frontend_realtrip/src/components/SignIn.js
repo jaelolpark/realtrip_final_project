@@ -1,16 +1,57 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { userLoginFetch } from '../actions/authActions';
+import { withRouter } from 'react-router-dom';
 
-export default function SignIn() {
-  return (
-    <div>
-      <h1>SignIn.js</h1>
-      <form>
-        <input />
-        <br/>
-        <input />
-        <br/>
-        <input type='submit' />
+class SignIn extends Component {
+  state = {
+    username: '',
+    password: ''
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    this.props.userLoginFetch(this.state)
+    this.props.history.push('/profile')
+  }
+
+  render() {
+    console.log(this.props.history)
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <h1>Login</h1>
+
+        <label>Username</label>
+        <input
+          name='username'
+          placeholder='Username'
+          value={this.state.username}
+          onChange={this.handleChange}
+          /><br/>
+
+        <label>Password</label>
+        <input
+          type='password'
+          name='password'
+          placeholder='Password'
+          value={this.state.password}
+          onChange={this.handleChange}
+          /><br/>
+
+        <input type='submit'/>
       </form>
-    </div>
-  )
+    )
+  }
 }
+
+const mapDispatchToProps = dispatch => ({
+userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo))
+})
+
+export default withRouter(connect(null, mapDispatchToProps)(SignIn));
