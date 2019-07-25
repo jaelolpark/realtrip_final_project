@@ -12,7 +12,7 @@ class ToursController < ApplicationController
   def create
     @tour = Tour.new(tour_params)
     if(@tour.save)
-      render json: {tour: @tour}, status: :created
+      render json: {user: UserSerializer.new(@user)}, status: :created
     else
       render json: {errors: @tour.errors.full_message}, status: :unprocessable_entity
     end

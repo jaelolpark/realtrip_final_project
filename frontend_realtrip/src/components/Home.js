@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Searchbar from "./Searchbar"
-import TourCard from "./TourCard"
+import TourCard from "./TourCard" 
+
 
 import '../stylesheets/Home.scss'
 

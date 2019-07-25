@@ -6,7 +6,13 @@ import logo from '../image/logo.png'
 import {logoutUser} from '../actions/authActions';
 import App from '../App';
 
+
+import {Dropdown} from 'react-bootstrap'
+
 class Navbar extends Component {
+
+  state = { myAc: true,
+    guideDrop: true }
 
   handleClick = event => {
     event.preventDefault()
@@ -15,7 +21,9 @@ class Navbar extends Component {
     // Remove the user object from the Redux store
     this.props.logoutUser()
   }
+
   render() {
+    console.log(this.state)
     return (
     <div id="app" class="container">
       <div id="navbar" >
@@ -23,11 +31,29 @@ class Navbar extends Component {
         <div className='log-btns'>
           <div className='navbar-item'><Link to='/'>Home</Link></div>
           <div className='navbar-item'><Link to='/'>Things To Do</Link></div>
-          <div className='navbar-item'><Link to='/'>Become a Partner</Link></div>
           {
            this.props.loggedIn ? 
             <Fragment>
-              <div className='navbar-item'><Link to='/profile'>My Profile</Link></div>
+              <Dropdown>
+                <button onClick={()=> this.setState({ guideDrop: !this.state.guideDrop}) }>Become Guide</button>
+                <div hidden={this.state.guideDrop}>
+                  <Dropdown.Menu show={true} >
+                    <Dropdown.Item eventKey="1" href="/">My Schedules</Dropdown.Item>
+                    <Dropdown.Item eventKey="2" href="/TourForm">Make New Tour</Dropdown.Item>
+                  </Dropdown.Menu>
+                </div>
+              </Dropdown>
+
+              <Dropdown>
+                <button onClick={()=> this.setState({ myAc: !this.state.myAc }) }>My Account</button>
+                <div hidden={this.state.myAc}>
+                  <Dropdown.Menu show={true} >
+                    <Dropdown.Item eventKey="1" href="/">Personal Info</Dropdown.Item>
+                    <Dropdown.Item eventKey="2" href="/profile">My Trips</Dropdown.Item>
+                  </Dropdown.Menu>
+                </div>
+              </Dropdown>
+
               <div className='navbar-item' onClick={this.handleClick}><Link to='/'>Sign-out</Link></div>
             </Fragment>
             :

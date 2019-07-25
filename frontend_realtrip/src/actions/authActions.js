@@ -6,7 +6,7 @@ import { LOGIN_USER, LOGOUT_USER } from './types';
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
-          Accept: 'application/json',
+          Accept: 'application/json'
         },
         body: JSON.stringify({user})
       })

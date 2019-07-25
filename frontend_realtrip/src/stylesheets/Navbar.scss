@@ -2,11 +2,12 @@
 
 #navbar {
   align-items: center;
-  display: grid;
-  grid-template-columns: 2.65fr 3.48fr;
+  // display: grid;
+  // grid-template-columns: 2.65fr 3.48fr;
   width: 100%;
   padding: 10px 0 10px 0;
 }
+
 
 #logo {
   width: 160px;
@@ -15,6 +16,8 @@
 
 #navbar div {
   display: inline-block;
+  // ff
+  margin-right: 0 auto;
 }
 
 .navbar-item a {
@@ -31,5 +34,23 @@
   &:hover {
     color: white;
     background-color: $mainBlue;
+  }
+}
+
+button {
+  cursor: pointer;
+
+  padding: 7px;
+  margin: 0 8px;
+
+  color: $mainPink;
+  font-size: 1.16em;
+  text-decoration: none;
+  border: 2px solid $mainPink;
+  border-radius: 8px;
+  transition: 0.30s;
+  &:hover {
+    color: white;
+    background-color: $mainPink;
   }
 }

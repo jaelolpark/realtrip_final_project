@@ -8,6 +8,8 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Profile from './components/Profile';
 
+import tourForm from './components/TourForm';
+
 // Redux
 import {connect} from 'react-redux';
 
@@ -31,6 +33,7 @@ componentDidMount(){
           </main>
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/tourForm' component={tourForm} />
             
             {/* <Route path='/sign-in' component={SignIn} /> */}
             <Route path='/sign-in' render={() => this.props.loggedIn ? <Redirect to='/profile' /> :  <SignIn /> } />
@@ -46,8 +49,7 @@ componentDidMount(){
   }
 }
 const mapStateToProps = state => ({
-  // currentUser: state.auth.currentUser,
-  loggedIn: state.auth.loggedIn
+  loggedIn: state.auth.loggedIn 
 })
 
 const mapDispatchToProps = dispatch => {

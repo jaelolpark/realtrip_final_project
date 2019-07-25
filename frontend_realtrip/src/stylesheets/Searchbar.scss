@@ -19,31 +19,31 @@
 #search input {
   display: inline-block;
   width: 400px;
-  height: 50px;
+  height: 60px;
 
   margin: 50px auto 30px auto;
   padding-left: 10px;
 
   outline: none;
-  border: 2px solid #ffa69e;
+  border: 3px solid $mainPink;
   border-right: none;
   border-radius: 8px 0 0 8px;
 }
 
 #search button {
   display: inline-block;
-  height: 50px;
+  height: 60px;
   padding: 0 10px;
   
   color: $mainBlue;
   font-size: 1.20em;
 
-  border: 2px solid #ffa69e;
+  border: 3px solid $mainPink;
   border-left: none;
   border-radius: 0 8px 8px 0;
   background-color: white;
 
   cursor: pointer;
   transition: 0.30s;
-  &:hover { color: #ffa69e; }
+  &:hover { color: $mainPink; }
 }
