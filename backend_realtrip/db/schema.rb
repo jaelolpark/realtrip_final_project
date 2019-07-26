@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_07_19_165212) do
   create_table "tours", force: :cascade do |t|
     t.bigint "user_id"
     t.string "title"
-    t.string "detail"
+    t.string "details"
     t.string "second_language"
     t.integer "number_of_ppl"
     t.float "price"

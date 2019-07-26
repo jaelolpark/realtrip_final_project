@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGOUT_USER } from './types';
+import {FETCH_TOURS, NEW_TOUR } from './types';
 
   export const createTour = tour => {
     return dispatch => {
@@ -32,6 +32,5 @@ import { LOGIN_USER, LOGOUT_USER } from './types';
     payload: userObj
 })
 
-export const logoutUser = () => ({
-  type: LOGOUT_USER
-})
+
+
