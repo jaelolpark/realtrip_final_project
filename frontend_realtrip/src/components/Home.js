@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
 import Searchbar from "./Searchbar"
-import TourCard from "./TourCard" 
-
+import { connect } from 'react-redux';
+import { fetchTours } from '../actions/tourActions';
 
 import '../stylesheets/Home.scss'
 
 
-export default class Home extends Component {
-
-  state = { allTours: [] }
-
+class Home extends Component {
   componentDidMount() {
-    fetch('http://localhost:3000/tours')
-    .then(res  => res.json())
-    .then(json => { this.setState({ allTours: json })
-  })}
-  
+    this.props.fetchTours();
+  }
+
   render() {
+    const tourCards = this.props.tours.map( tour => (
+      <div className="tour-card" style={{ backgroundImage: `url(${tour.image_url})` }}>
+      <p className='price'>${tour.price}</p>
+      <h5 className='heading'>{tour.title}</h5>
+    </div>
+    ))
     return (
       <div id="home">
         <div >
@@ -24,9 +25,16 @@ export default class Home extends Component {
         </div>
 
         <div className='tour-container'>
-          { this.state.allTours.map(tour => <TourCard tour={tour} />) }
+          { tourCards }
         </div>
       </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  tours: state.tours.tours
+});
+
+export default connect(mapStateToProps, {fetchTours})(Home)
+

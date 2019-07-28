@@ -4,7 +4,7 @@ class CreateTours < ActiveRecord::Migration[5.2]
       t.belongs_to :user
       
       t.string :title
-      t.string :detail
+      t.string :details
       t.string :second_language
       t.integer :number_of_ppl
       t.float :price
