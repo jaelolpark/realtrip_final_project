@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def new_user_params
-    params.require(:user).permit(:to_be_guide, :first_name, :last_name, :username, :password)
+    params.require(:user).permit(:to_be_guide, :second_language, :first_name, :last_name, :username, :password)
   end
 
   def visitor_params

@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password_digest
 
       t.boolean :to_be_guide
+      t.string :second_language
       t.string :introduce
       t.string :avatar
 

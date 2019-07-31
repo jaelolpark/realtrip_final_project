@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_07_19_165212) do
     t.string "username"
     t.string "password_digest"
     t.boolean "to_be_guide"
+    t.string "second_language"
     t.string "introduce"
     t.string "avatar"
     t.datetime "created_at", null: false
