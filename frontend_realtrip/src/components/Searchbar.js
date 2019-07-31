@@ -9,7 +9,7 @@ export default class Searchbar extends Component {
         <h1 id='title'>Where To Go?</h1>
 
         <div id='search'>
-          <input type="text" placeholder="Search 'Tour' or 'Destination'" aria-label="Search"></input>
+          <input type="text" placeholder="Search 'Destination'" aria-label="Search"></input>
           <button type="submit">Search</button>
         </div>
       </div>

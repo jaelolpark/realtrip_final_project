@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import {createTour} from '../actions/tourActions';
-import '../stylesheets/TourForm.scss'
+
+
 
 import '../stylesheets/TourForm.scss'
 
 
-export default class TourForm extends Component {
+class TourForm extends Component {
 
   state = {
     title: '',
@@ -18,8 +19,9 @@ export default class TourForm extends Component {
     include: '',
     exclude: '',
     image_url: '',
-    start_time: '',
-    end_time: ''
+    start_date: '',
+    end_date: '',
+    image: '',
   }
 
   handleChange = event => {
@@ -30,17 +32,21 @@ export default class TourForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.createUser(this.state)
+    this.props.createTour(this.state)
+    this.props.history.push('/schedule')
   }
+
   
   render() {
     return (
       <div class="container">
+      <div class="card card-signup my-5">
       <div class="tourform-row">
-      <h1 class="card-title text-center">Make New Tour</h1>
+      <h1 class="card-title text-center">Create New Tour</h1>
       <br/>
       <br/>
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        
         <form onSubmit={this.handleSubmit}>
         <div class="form-group">
             <label>Location</label>
@@ -57,10 +63,17 @@ export default class TourForm extends Component {
           <div class="form-group">
             <label>Image file</label>
             <div class="custom-file">
-              <input type="file" class="custom-efile-input" id="customFile" value={this.state.image_url} onChange={this.handleChange}/>
+              <input type="file" class="custom-efile-input" id="customFile" value={this.state.image} onChange={this.handleChange}/>
               <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
           </div>
+          <div class="form-group">
+            <label>Image URL</label>
+            <div class="text-center">
+            <input name='image_url' type="text" class="form-control" id="imageTitle" value={this.state.image_url} onChange={this.handleChange} placeholder="Image URL"/>
+            </div>
+          </div>
+
           <div class="form-group">
             <label>Price per Person($)</label>
             <input name="price" type="price" class="form-control" id="price" value={this.state.price} onChange={this.handleChange} placeholder="Price per Person($)"/>
@@ -82,10 +95,18 @@ export default class TourForm extends Component {
           
           <br/>
           <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Complete</button>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
         </form>
       </div>
       </div>
       </div> 
+      </div>
     )
   }
 }
+
+
+export default connect(null, {createTour} )(TourForm)

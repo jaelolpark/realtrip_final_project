@@ -25,12 +25,12 @@ class Navbar extends Component {
   render() {
     console.log(this.state)
     return (
-    <div id="app" class="container">
+    <div id="app" className="container">
       <div id="navbar" >
-        <Link class="navbar-brand " to="/"><img id="logo" src={logo} alt="Real Trip logo" /></Link>
+        <Link className="navbar-brand " to="/"><img id="logo" src={logo} alt="Real Trip logo" /></Link>
         <div className='log-btns'>
           <div className='navbar-item'><Link to='/'>Home</Link></div>
-          <div className='navbar-item'><Link to='/'>Things To Do</Link></div>
+          <div className='navbar-item'><Link to='/thingstodo'>Things To Do</Link></div>
           {
            this.props.loggedIn ? 
             <Fragment>
@@ -38,7 +38,7 @@ class Navbar extends Component {
                 <button onClick={()=> this.setState({ guideDrop: !this.state.guideDrop}) }>Become Guide</button>
                 <div hidden={this.state.guideDrop}>
                   <Dropdown.Menu show={true} >
-                    <Dropdown.Item eventKey="1" href="/">My Schedules</Dropdown.Item>
+                    <Dropdown.Item eventKey="1" href="/schedule">My Schedules</Dropdown.Item>
                     <Dropdown.Item eventKey="2" href="/TourForm">Make New Tour</Dropdown.Item>
                   </Dropdown.Menu>
                 </div>
@@ -48,8 +48,8 @@ class Navbar extends Component {
                 <button onClick={()=> this.setState({ myAc: !this.state.myAc }) }>My Account</button>
                 <div hidden={this.state.myAc}>
                   <Dropdown.Menu show={true} >
-                    <Dropdown.Item eventKey="1" href="/">Personal Info</Dropdown.Item>
-                    <Dropdown.Item eventKey="2" href="/profile">My Trips</Dropdown.Item>
+                    <Dropdown.Item eventKey="1" href="/profile">Personal Info</Dropdown.Item>
+                    <Dropdown.Item eventKey="2" href="/mytrips">My Trips</Dropdown.Item>
                   </Dropdown.Menu>
                 </div>
               </Dropdown>

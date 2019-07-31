@@ -6,6 +6,7 @@
   grid-template-columns: 2.65fr 3.48fr;
   width: 100%;
   padding: 10px 0 10px 0;
+  
 }
 
 
@@ -19,6 +20,8 @@
 }
 
 .navbar-item a {
+  justify-items: right;
+  text-align: right;
   cursor: pointer;
   padding: 7px;
   margin: 0 8px;

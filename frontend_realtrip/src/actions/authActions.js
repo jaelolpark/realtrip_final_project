@@ -64,6 +64,7 @@ import { LOGIN_USER, LOGOUT_USER } from './types';
         })
           .then(resp => resp.json())
           .then(data => {
+            console.log(data)
             if (data.message) {
               // An error will occur if the token is invalid.
               // If this happens, you may want to remove the invalid token.

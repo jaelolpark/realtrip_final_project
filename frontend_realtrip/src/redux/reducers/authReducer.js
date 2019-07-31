@@ -9,6 +9,7 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
 
       case LOGIN_USER:
+      console.log(action.payload)
         return {...state, currentUser: action.payload, loggedIn: true}
 
       case LOGOUT_USER:
