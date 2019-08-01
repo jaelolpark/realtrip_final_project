@@ -12,6 +12,7 @@ import tourForm from './components/TourForm';
 import Mytrips from './components/Mytrips';
 import ThingsTodo from './components/ThingsTodo';
 import TourPage from './components/TourPage';
+import Edit_Profile from './components/Edit_Profile'
 // Redux
 import {connect} from 'react-redux';
 
@@ -39,7 +40,7 @@ componentDidMount(){
             <Route exact path='/schedule' component={Schedule} />
             <Route exact path='/mytrips' component={Mytrips} />
             <Route exact path='/thingstodo' component={ThingsTodo} />
-
+            <Route exact path='/edit_profile' component={Edit_Profile} />
             {/* <Route path='/sign-in' component={SignIn} /> */}
             <Route path='/sign-in' render={() => this.props.loggedIn ? <Redirect to='/mytrips' /> :  <SignIn /> } />
 

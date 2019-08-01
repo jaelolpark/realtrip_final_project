@@ -9,7 +9,6 @@ export default class TourPage extends Component {
     fetch('http://localhost:3000/tours/'+this.props.tour_id)
     .then(res => res.json())
     .then(res => {
-      console.log(res)
       this.setState({ tour: res })
     })
   }
@@ -18,9 +17,13 @@ export default class TourPage extends Component {
       return null
 
     let tour = this.state.tour
+    
     return (
+      
       <div>
         <h1>{tour.title}</h1>
+   
+
       </div>
     )
   }

@@ -34,15 +34,18 @@ class Navbar extends Component {
           {
            this.props.loggedIn ? 
             <Fragment>
-              <Dropdown>
-                <button onClick={()=> this.setState({ guideDrop: !this.state.guideDrop}) }>Become Guide</button>
-                <div hidden={this.state.guideDrop}>
-                  <Dropdown.Menu show={true} >
-                    <Dropdown.Item eventKey="1" href="/schedule">My Schedules</Dropdown.Item>
-                    <Dropdown.Item eventKey="2" href="/TourForm">Make New Tour</Dropdown.Item>
-                  </Dropdown.Menu>
-                </div>
-              </Dropdown>
+              {
+                this.props.currentUser.to_be_guide &&
+                <Dropdown>
+                  <button onClick={()=> this.setState({ guideDrop: !this.state.guideDrop}) }>Become Guide</button>
+                  <div hidden={this.state.guideDrop}>
+                    <Dropdown.Menu show={true} >
+                      <Dropdown.Item eventKey="1" href="/schedule">My Schedules</Dropdown.Item>
+                      <Dropdown.Item eventKey="2" href="/TourForm">Make New Tour</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </div>
+                </Dropdown>
+              }
 
               <Dropdown>
                 <button onClick={()=> this.setState({ myAc: !this.state.myAc }) }>My Account</button>

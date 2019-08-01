@@ -1,8 +1,8 @@
-import { LOGIN_USER, LOGOUT_USER } from '../../actions/types';
+import { LOGIN_USER, LOGOUT_USER, EDIT_USER } from '../../actions/types';
 
 const initialState = {
   loggedIn: !!localStorage.token,
-  currentUser: {}
+  currentUser: {},
 }
 
 export default function reducer(state = initialState, action) {
@@ -15,7 +15,10 @@ export default function reducer(state = initialState, action) {
       case LOGOUT_USER:
         localStorage.removeItem('token')
         return {...state, currentUser: {}, loggedIn: false }
-
+      
+      case EDIT_USER:
+        return {...state, currentUser: action.payload
+        }
       default: { return state; }
     }
 }

@@ -17,8 +17,9 @@ class Mytrips extends Component {
 
     return (
       <div>
-        <h1>Your Tours</h1>
+        <div class="tour-container">
         { myBookings }
+        </div>
       </div>
     )
   }

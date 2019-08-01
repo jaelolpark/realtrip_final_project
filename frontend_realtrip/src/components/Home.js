@@ -22,20 +22,28 @@ class Home extends Component {
     Modal.setAppElement('#root')
     console.log(tour)
     return <Modal id='Tour-Modal' isOpen='true'>
+      <div class="float-sm-right" id='guide_info'>
+        <h3>Tour's Guide</h3>
+        <img src={tour.guide.avatar} right width="200px" height="200px"/>
+        <br/>
+        Name: {tour.guide.full_name}
+        <br/>
+        Second_Language: {tour.guide.second_language}
+      </div>
       <div>
-      <img src={tour.image_url} center width="500px" height="300px"/>
+        <img src={tour.image_url} center width="700px" height="450px"/>
+      </div><br/>
+      <div id='name'>
+        <h3>{tour.title}</h3>
       </div>
       <div id='location'>
-        Location: {tour.location}
-      </div>
-      <div id='name'>
-        Tour Title: {tour.title}
+        <h5>Location: {tour.location}</h5>
       </div>
       <div id='details'>
         Details: {tour.details}
-      </div>
+      </div><br/>
       <div id='second_language'> 
-        Second_Language: {tour.second_language}
+        Second Language: {tour.second_language}
       </div>
       <div id='price'>
         Price per Person: ${tour.price}
@@ -50,13 +58,7 @@ class Home extends Component {
         Maximum Number of Tourist: {tour.number_of_ppl}
       </div>
 
-      <div id='guide_name'>
-        Guide: {tour.guide.full_name}
-        
-      </div>
-
-
-      <button onClick={()=> this.setState({showTourModal: false}) }>Close</button>
+      <button id='close' onClick={()=> this.setState({showTourModal: false}) }>Close</button>
     </Modal>
   }
   render() {
