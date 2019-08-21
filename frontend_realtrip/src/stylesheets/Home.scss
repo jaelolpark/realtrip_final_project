@@ -54,9 +54,28 @@
 #Tour-Modal {
   margin: auto;
 	width: 1000px;
-  height: 800px;
+  height: 750px;
+}
+.btn-con {
+  position: relative;
+  top: -48px;
+  left: 720px;
 }
 
-#close {
-  float: right;
+#bk {
+  cursor: pointer;
+
+  padding: 7px;
+  margin: 0 8px;
+
+  color: $mainBlue;
+  font-size: 1.16em;
+  text-decoration: none;
+  border: 2px solid $mainBlue;
+  border-radius: 8px;
+  transition: 0.30s;
+  &:hover {
+    color: white;
+    background-color: $mainBlue;
+  }
 }

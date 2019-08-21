@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [ :index, :create ]
-  before_action :set_user, only: [ :show, :update ]
+  before_action :set_user, only: [ :show ]
 
   def index
     @users = User.all
@@ -28,8 +28,9 @@ class UsersController < ApplicationController
   end
   
   def update
-    if @user.update( params[:to_be_guide] ? guide_params : visitor_params )
-      render json: {}, status: :ok
+    # if @user.update( params[:to_be_guide] ? guide_params : visitor_params )
+    if @user.update(update_user_params)
+      render json: { user: UserSerializer.new(@user) }, status: :ok
     else
       render json: @user.errors.full_messages, status: :unprocessable_entity
 		end
@@ -53,11 +54,14 @@ class UsersController < ApplicationController
     params.require(:user).permit(:to_be_guide, :second_language, :first_name, :last_name, :username, :password)
   end
 
-  def visitor_params
-    params.require(:user).permit(:first_name, :last_name, :username, :password)
+  def update_user_params
+    params.require(:user).permit(:to_be_guide, :first_name, :last_name, :username, :password, :introduce, :avatar, :second_language)
   end
+  # def visitor_params
+  #   params.require(:user).permit(:first_name, :last_name, :username, :password)
+  # end
 
-  def guide_params
-    params.require(:user).permit(:to_be_guide, :first_name, :last_name, :username, :password, :introduce, :avatar)
-  end
+  # def guide_params
+  #   params.require(:user).permit(:to_be_guide, :first_name, :last_name, :username, :password, :introduce, :avatar)
+  # end
 end

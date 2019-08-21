@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import Searchbar from "./Searchbar"
 import { connect } from 'react-redux';
 import { fetchTours } from '../actions/tourActions';
+import { getProfileFetch } from '../actions/authActions';
+
+
+import {Button, Row} from 'react-bootstrap'
 
 import Modal from 'react-modal'
 
@@ -31,7 +35,7 @@ class Home extends Component {
         Second_Language: {tour.guide.second_language}
       </div>
       <div>
-        <img src={tour.image_url} center width="700px" height="450px"/>
+        <img src={tour.image_url} center width="550px" height="380px"/>
       </div><br/>
       <div id='name'>
         <h3>{tour.title}</h3>
@@ -57,10 +61,27 @@ class Home extends Component {
       <div id='ppl'>
         Maximum Number of Tourist: {tour.number_of_ppl}
       </div>
-
-      <button id='close' onClick={()=> this.setState({showTourModal: false}) }>Close</button>
+      <div className='btn-con'>
+        <button id='bk' onClick={()=> this.bookTour(tour.id)}>Book This Tour</button>
+        <button onClick={()=> this.setState({showTourModal: false}) }>Close</button>
+      </div>
     </Modal>
   }
+
+  bookTour=(tourId)=> {
+    this.createBooking(tourId).then(()=> this.setState({showTourModal: false}))
+  }
+    createBooking =(tourId)=> {
+      return fetch("http://localhost:3000/bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", 
+          Accept: "application/json",
+          'Authorization': `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify({tour_id: tourId, user_id: this.props.user.id})
+      }).then(() => getProfileFetch())
+    }
   render() {
     const tourCards = this.props.tours.map( tour => (
       <div onClick={()=> this.setState({ showTourModal: tour })} key={tour.id} className="tour-card" style={{ backgroundImage: `url(${tour.image_url})` }}>
@@ -92,8 +113,10 @@ Home.propTypes = {
 
 const mapStateToProps = state => ({
   tours: state.tours.tours,
-  newTour: state.tours.tour
+  newTour: state.tours.tour,
+  user: state.auth.currentUser
 });
+
 
 export default connect(mapStateToProps, {fetchTours})(Home)
 

@@ -12,9 +12,11 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new(new_booking_params)
+    user_id = params[:booking][:user_id]
+    @user = User.find(user_id)
     if @booking.save
-      render json: @booking
+      render json: UserSerializer.new(@user), status: :ok
     else
       render json: {}, status: :unprocessable_entity
     end

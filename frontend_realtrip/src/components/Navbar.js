@@ -35,7 +35,7 @@ class Navbar extends Component {
            this.props.loggedIn ? 
             <Fragment>
               {
-                this.props.currentUser.to_be_guide &&
+                this.props.currentUser && this.props.currentUser.to_be_guide &&
                 <Dropdown>
                   <button onClick={()=> this.setState({ guideDrop: !this.state.guideDrop}) }>Become Guide</button>
                   <div hidden={this.state.guideDrop}>

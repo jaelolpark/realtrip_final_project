@@ -19,7 +19,7 @@ gem "jwt"
 gem "faker"
 
 
-
+gem "nokogiri", ">= 1.10.4"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
