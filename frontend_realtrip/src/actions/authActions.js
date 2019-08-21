@@ -64,6 +64,7 @@ import { LOGIN_USER, LOGOUT_USER } from './types';
         })
           .then(resp => resp.json())
           .then(data => {
+            console.log(data)
             if (data.message) {
               // An error will occur if the token is invalid.
               // If this happens, you may want to remove the invalid token.
@@ -75,7 +76,35 @@ import { LOGIN_USER, LOGOUT_USER } from './types';
       }
     }
   }
+  export const editUser = (userHash) => {
+    console.log(userHash)
+    return dispatch => {
+      const token = localStorage.token;
+      fetch('http://localhost:3000/users/55', {
+        method: "PATCH",
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ user: userHash })
+      })
+      .then(resp => resp.json())
+      .then(res => {
+        console.log(res)
+        if (res.message) {
+          // An error will occur if the token is invalid.
+          // If this happens, you may want to remove the invalid token.
+        } else {
+          dispatch({ type: 'EDIT_USER', payload: res.user });
+        }
+      })
 
+    }
+  }
+
+
+    
   const loginUser = userObj => ({
       type: 'LOGIN_USER',
       payload: userObj

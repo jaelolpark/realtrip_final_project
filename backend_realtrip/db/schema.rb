@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_07_19_165212) do
   end
 
   create_table "tours", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "guide_id"
     t.string "title"
     t.string "details"
     t.string "second_language"
@@ -46,11 +46,12 @@ ActiveRecord::Schema.define(version: 2019_07_19_165212) do
     t.string "include"
     t.string "exclude"
     t.string "image_url"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.string "image"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_tours_on_user_id"
+    t.index ["guide_id"], name: "index_tours_on_guide_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_07_19_165212) do
     t.string "username"
     t.string "password_digest"
     t.boolean "to_be_guide"
+    t.string "second_language"
     t.string "introduce"
     t.string "avatar"
     t.datetime "created_at", null: false

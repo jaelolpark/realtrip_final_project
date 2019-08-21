@@ -6,8 +6,9 @@ ruby '2.6.3'
 
 
 
-
-
+# gem 'fog'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 gem 'active_model_serializers'
 gem 'pry'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
@@ -18,7 +19,7 @@ gem "jwt"
 gem "faker"
 
 
-
+gem "nokogiri", ">= 1.10.4"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

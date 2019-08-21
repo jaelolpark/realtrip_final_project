@@ -1,7 +1,7 @@
 class CreateTours < ActiveRecord::Migration[5.2]
   def change
     create_table :tours do |t|
-      t.belongs_to :user
+      t.references :guide, index: true
       
       t.string :title
       t.string :details
@@ -13,9 +13,10 @@ class CreateTours < ActiveRecord::Migration[5.2]
       t.string :exclude
       
       t.string :image_url
+      t.string :image
 
-      t.datetime :start_time
-      t.datetime :end_time
+      t.datetime :start_date
+      t.datetime :end_date
 
       t.timestamps
     end
